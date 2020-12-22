@@ -12,6 +12,12 @@ const eventSchema = new Schema(
             type : String,
             required: true
         },
+        city: {
+            type : String
+        },
+        postcode :{
+            type : Number
+        },
         description: {
             type : String,
             required: true
@@ -20,7 +26,7 @@ const eventSchema = new Schema(
             type : Date,
             required: true
         },
-    }
+    }, {timestamps : true}
 )
 
 const Event = mongoose.model('Event',eventSchema)
