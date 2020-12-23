@@ -72,6 +72,22 @@ const updateEvent=(req,res) => {
 
 }
 
+const deleteEvent=(req,res) => {
+    let eventId = req.body.eventId
+    Event.findByIdAndDelete(eventId)
+    .then( () =>{
+        res.json({
+            message : 'Event Deleted'
+        })
+    })
+    .catch(error => {
+        res.json({
+            message : 'An error Occured during delete event !'
+        })
+    })
+
+}
+
 module.exports = {
-    allEvents,getOneEvent,addEvent,updateEvent
+    allEvents,getOneEvent,addEvent,updateEvent,deleteEvent
 }
