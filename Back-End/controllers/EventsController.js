@@ -49,6 +49,7 @@ const addEvent=(req,res) => {
 const updateEvent=(req,res) => {
     let eventId = req.body.eventId
     let eventUpdate = new Event({
+        _id : eventId,
         name: req.body.name,
         place: req.body.place, 
         city: req.body.city,
