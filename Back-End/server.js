@@ -9,7 +9,7 @@ const app = express()
 const EventRoute = require('./routes/events')
 
 
-mongoose.connect('mongodb://localhost:27017/shallWeDance', { useNewUrlParser : true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/shallWeDance', { useNewUrlParser : true, useUnifiedTopology: true,useFindAndModify: false})
 const db = mongoose.connection
 
 db.on('error', (err)=> {
