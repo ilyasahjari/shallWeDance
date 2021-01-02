@@ -33,6 +33,9 @@ const addEvent=(req,res) => {
         description: req.body.description,
         date: req.body.date
     })
+    if(req.file){
+        event.image = req.file.path
+    }
     event.save()
     .then(response => {
         res.json({
