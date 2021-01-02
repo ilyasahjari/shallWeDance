@@ -15,24 +15,33 @@ class AddEvent extends React.Component{
       city: '',
       postcode: 0,
       description: '',
-      date : moment().format("DD-MM-YYYY hh:mm:ss")
+      date : moment().format("DD-MM-YYYY hh:mm:ss"),
     }
+    this.formData = new FormData();
   }
 
   myChangeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  myChangeHandlerFile = (e) => {
+    this.formData.append('image',e.target.files[0])
+  }
+
 
   mySubmitHandler = (e) => {
     e.preventDefault();
     console.log(this.state);
+    this.formData.append('name',this.state.name);
+    this.formData.append('place',this.state.place);
+    this.formData.append('city',this.state.city);
+    this.formData.append('postcode',this.state.postcode);
+    this.formData.append('description',this.state.description);
+    this.formData.append('date',this.state.date);
+    console.log(this.formData.get('image'))
     fetch('http://localhost:3001/api/event/addEvent', {
       method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
+      body: this.formData
     })
     .then((response) => response.json())
     .then((result) => {
@@ -44,7 +53,7 @@ class AddEvent extends React.Component{
     return (
       <div>
         <h1> Ajout d'un événement </h1>
-        <form onSubmit={this.mySubmitHandler}>
+        <form onSubmit={this.mySubmitHandler} encType="multipart/form-data" >
           <div className="form-group">
             <label htmlFor="name">Nom</label>
             <input className="form-control" type="text" id="name" name="name" onChange={this.myChangeHandler} required/>
@@ -74,6 +83,12 @@ class AddEvent extends React.Component{
             <label htmlFor="date"> Date </label>
             <input type="date" id="date" name="date" className="form-control" onChange={this.myChangeHandler} defaultValue={this.state.date} required/>
           </div>
+
+          <div className="form-group">
+            <label htmlFor="image"> Image </label>
+            <input type="file" id="image" name="image" className="form-control" onChange={this.myChangeHandlerFile}/>
+          </div>
+
           <input type="submit" value="Envoyer" />
       </form>
     </div>
