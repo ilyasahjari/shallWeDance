@@ -26,6 +26,9 @@ const eventSchema = new Schema(
             type : Date,
             required: true
         },
+        image : {
+            type : String
+        },
     }, {timestamps : true}
 )
 
