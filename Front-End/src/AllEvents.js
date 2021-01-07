@@ -29,6 +29,7 @@ class AllEvents extends React.Component{
                      <div className="card mt-4">
                          <div className="card-body">
                             <h5 className="card-title">{event.name}</h5>
+                            <img src={process.env.PUBLIC_URL + '/' + event.image} />
                             <ul className="list-unstyled text-left">
                                 <li> Date : {event.date} </li>
                                 <li> Lieu : {event.place}</li>
