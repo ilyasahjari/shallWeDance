@@ -34,7 +34,9 @@ const addEvent=(req,res) => {
         date: req.body.date
     })
     if(req.file){
-        event.image = req.file.path
+        var name = req.file.path
+        var split = name.split('/')
+        event.image = split[split.length-1]
     }
     event.save()
     .then(response => {
