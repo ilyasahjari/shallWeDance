@@ -28,6 +28,12 @@
   color: #61dafb;
 }
 
+.imgEvent{
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
