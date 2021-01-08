@@ -2,8 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import moment from "moment";
-
-
+import DatePicker from 'react-datepicker'
 
 class UpdateEvent extends React.Component{
 
@@ -16,7 +15,8 @@ class UpdateEvent extends React.Component{
       city: '',
       postcode: 0,
       description: '',
-      date : moment().format("DD-MM-YYYY hh:mm:ss")
+      hour:'',
+      date : 'moment().format("DD-MM-YYYY hh:mm:ss")'
     }
   }
 
@@ -40,9 +40,7 @@ class UpdateEvent extends React.Component{
       this.setState({postcode : result.response.postcode})
       this.setState({description : result.response.description})
       this.setState({date : result.response.date})
-
-
-
+      this.setState({hour : result.response.hour})
     })
  }
 
@@ -96,10 +94,18 @@ class UpdateEvent extends React.Component{
           <textarea id="description" name="description" className="form-control" value={this.state.description} onChange={this.myChangeHandler} required> </textarea>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="date"> Date </label>
-          <input type="date" id="date" name="date" className="form-control" value={this.state.date} onChange={this.myChangeHandler} defaultValue={this.state.date} required/>
+        <div className="form-row mb-2">
+          <div className="col">
+            <label htmlFor="date"> Date </label>
+            <input type="date" id="date" name="date" className="form-control" value={this.state.date} onChange={this.myChangeHandler} value={moment(this.state.date).format("YYYY-MM-DD")} required/>
+          </div>
+          <div className="col">
+              <label htmlFor="hour"> Heure </label>
+              <input type="time" id="hour" name="hour" className="form-control" onChange={this.myChangeHandler} defaultValue={this.state.hour}/>
+          </div>
         </div>
+
+  
         <input type="submit" value="Envoyer" />
     </form>
   </div>

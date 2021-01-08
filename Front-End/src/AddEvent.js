@@ -16,7 +16,7 @@ class AddEvent extends React.Component{
       postcode: 0,
       description: '',
       hour :'',
-      date : moment().format("DD-MM-YYYY"),
+      date : moment(),
     }
     this.formData = new FormData();
   }
@@ -32,7 +32,6 @@ class AddEvent extends React.Component{
 
   mySubmitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state);
     this.formData.append('name',this.state.name);
     this.formData.append('place',this.state.place);
     this.formData.append('city',this.state.city);
@@ -83,7 +82,7 @@ class AddEvent extends React.Component{
           <div className="form-row">
             <div className="col">
               <label htmlFor="date"> Date </label>
-              <input type="date" id="date" name="date" className="form-control" onChange={this.myChangeHandler} defaultValue={this.state.date} required/>
+              <input type="date" id="date" name="date" className="form-control" onChange={this.myChangeHandler} value={moment(this.state.date).format("YYYY-MM-DD")} required/>
             </div>
             <div className="col">
               <label htmlFor="hour"> Heure </label>
