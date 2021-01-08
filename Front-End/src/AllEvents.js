@@ -41,7 +41,7 @@ class AllEvents extends React.Component{
                             <div className="col-md-6">
                                 <ul className="list-unstyled text-left">
                                     <li> Date : {
-                                        moment(event.date).format("DD MMMM YYYY HH:MM")
+                                        moment(event.date).format("DD MMMM YYYY") + " à " + event.hour
                                     } 
                                     </li>
                                     <li> Lieu : {event.place}</li>

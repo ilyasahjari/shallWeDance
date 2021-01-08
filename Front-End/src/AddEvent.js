@@ -15,7 +15,8 @@ class AddEvent extends React.Component{
       city: '',
       postcode: 0,
       description: '',
-      date : moment().format("DD-MM-YYYY hh:mm:ss"),
+      hour :'',
+      date : moment(),
     }
     this.formData = new FormData();
   }
@@ -31,14 +32,13 @@ class AddEvent extends React.Component{
 
   mySubmitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state);
     this.formData.append('name',this.state.name);
     this.formData.append('place',this.state.place);
     this.formData.append('city',this.state.city);
     this.formData.append('postcode',this.state.postcode);
     this.formData.append('description',this.state.description);
     this.formData.append('date',this.state.date);
-    console.log(this.formData.get('image'))
+    this.formData.append('hour',this.state.hour)
     fetch('http://localhost:3001/api/event/addEvent', {
       method: "POST",
       body: this.formData
@@ -79,9 +79,16 @@ class AddEvent extends React.Component{
             <textarea id="description" name="description" className="form-control" onChange={this.myChangeHandler} required> </textarea>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="date"> Date </label>
-            <input type="date" id="date" name="date" className="form-control" onChange={this.myChangeHandler} defaultValue={this.state.date} required/>
+          <div className="form-row">
+            <div className="col">
+              <label htmlFor="date"> Date </label>
+              <input type="date" id="date" name="date" className="form-control" onChange={this.myChangeHandler} value={moment(this.state.date).format("YYYY-MM-DD")} required/>
+            </div>
+            <div className="col">
+              <label htmlFor="hour"> Heure </label>
+              <input type="time" id="hour" name="hour" className="form-control" onChange={this.myChangeHandler}/>
+            </div>
+            
           </div>
 
           <div className="form-group">

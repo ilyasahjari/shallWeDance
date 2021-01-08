@@ -31,7 +31,8 @@ const addEvent=(req,res) => {
         city: req.body.city,
         postcode: req.body.postcode,
         description: req.body.description,
-        date: req.body.date
+        date: req.body.date,
+        hour :req.body.hour
     })
     if(req.file){
         var name = req.file.path
@@ -60,7 +61,8 @@ const updateEvent=(req,res) => {
         city: req.body.city,
         postcode: req.body.postcode,
         description: req.body.description,
-        date: req.body.date
+        date: req.body.date,
+        hour :req.body.hour
     })
 
     Event.findByIdAndUpdate(eventId, {$set : eventUpdate})
