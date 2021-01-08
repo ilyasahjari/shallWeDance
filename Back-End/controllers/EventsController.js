@@ -43,7 +43,8 @@ const addEvent=(req,res) => {
     event.save()
     .then(response => {
         res.json({
-            message : 'Event Added'
+            message : 'Event Added',
+            event : event
         })
     })
     .catch(error => {
