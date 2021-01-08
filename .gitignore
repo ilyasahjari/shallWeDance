@@ -6,7 +6,7 @@ Back-End/node_modules
 Back-End/package-lock.json
 Front-End/package-lock.json
 Front-End/.eslintcache
-Front-End/public/images
+Front-End/public/images/*
 /.pnp
 .pnp.js
 

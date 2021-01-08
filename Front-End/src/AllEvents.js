@@ -36,12 +36,14 @@ class AllEvents extends React.Component{
                         <h2 className="text-center">{event.name}</h2>
                         <div className="row">
                             <div className="col-md-4 mb-2">
-                                <img className="imgEvent" src={process.env.PUBLIC_URL + '/' + event.image} />
+                                <img className="imgEvent" src={process.env.PUBLIC_URL + '/images/' + event.image} />
                             </div>
                             <div className="col-md-6">
                                 <ul className="list-unstyled text-left">
                                     <li> Date : {
-                                        moment(event.date).format("DD MMMM YYYY") + " à " + event.hour
+                                        event.hour?
+                                            moment(event.date).format("DD MMMM YYYY") + " à " + event.hour :
+                                            moment(event.date).format("DD MMMM YYYY")
                                     } 
                                     </li>
                                     <li> Lieu : {event.place}</li>

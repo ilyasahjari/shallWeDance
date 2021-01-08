@@ -1,4 +1,5 @@
 const Event = require('../models/Events')
+const path = require('path')
 
 const allEvents=(req,res) =>{
     Event.find()
@@ -36,7 +37,7 @@ const addEvent=(req,res) => {
     })
     if(req.file){
         var name = req.file.path
-        var split = name.split('/')
+        var split = name.split(path.sep)
         event.image = split[split.length-1]
     }
     event.save()
