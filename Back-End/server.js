@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
 
-
+const UserRoute = require('./routes/users')
 const EventRoute = require('./routes/events')
 
 
@@ -43,5 +43,6 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
 
-app.use('/api/event',EventRoute)
+app.use('/api/event', EventRoute)
+app.use('/api/user', UserRoute)
 

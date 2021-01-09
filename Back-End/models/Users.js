@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         validate(value){
-            if(validator.isEmail(value))
-                throw new Error('Not valide email !')
+            if(!validator.isEmail(value))
+                throw new Error('Not valid email !')
         }
     },
     password : {
@@ -24,19 +24,23 @@ const userSchema = new mongoose.Schema({
     },
     bornDate :{
         type: Date,
-        required: true
+        default: Date.now
     },
     gendre :{
-        type : String   
+        type : String,
+        default : "M"  
     },
     bio :{
-        type : String
+        type : String,
+        default: "Ready to dance"
     },
     country: {
-        type: String
+        type: String,
+        default : 'France'
     },
     image: {
-        type: String
+        type: String,
+        default: 'empty'
     },
     tokens: [{
         token: {
@@ -56,6 +60,7 @@ userSchema.methods.generateAuthToken = async function () {
     return token;
 }
 
+//not show the private data
 userSchema.methods.toJSON = function (){
     const user = this 
     const userObject = user.toObject()
@@ -95,11 +100,11 @@ userSchema.pre('save', async function (next) {
 })
 
 //add a virtual relation between event and user 
-// userSchema.virtual('event',{
-//     ref: 'Events',
-//     localField:'_id',
-//     foreignField: 'owner',
-// })
+userSchema.virtual('event',{
+    ref: 'Event',
+    localField:'_id',
+    foreignField: 'owner',
+})
 
 
 const User = mongoose.model('User', userSchema)
