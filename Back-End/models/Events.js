@@ -10,33 +10,38 @@ const eventSchema = new Schema(
         },
         place: {
             type : String,
+            default : "cite scientifique",
             required: true
         },
         city: {
-            type : String
+            type : String,
+            default : "lille"
         },
         postcode :{
-            type : Number
+            type : Number,
+            default: 59650
         },
         description: {
             type : String,
-            required: true
+            default: "evenement de danse"
         },
         date: {
             type : Date,
-            required: true
+            required: true,
+            default: Date.now
         },
         image : {
             type : String
         },
         hour : {
-            type : String
+            type : String,
+            default: "20:00"
         },
         owner :{
             type : mongoose.Schema.Types.ObjectId,
             required : true,
             ref: "User"
-        },
+        }
     }, {timestamps : true}
 )
 

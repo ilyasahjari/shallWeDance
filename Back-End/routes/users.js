@@ -85,7 +85,7 @@ router.delete('/user/me', auth ,async(req,res)=>{
 })
 
 //login/connect with email and password
-router.post('/user/login', async(req,res)=>{
+router.post('/login', async(req,res)=>{
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken();
@@ -96,7 +96,7 @@ router.post('/user/login', async(req,res)=>{
 })
 
 //disconnect user
-router.post('/user/logout', auth, async(req,res)=>{
+router.post('/logout', auth, async(req,res)=>{
     try{
         req.user.tokens = req.user.tokens.filter((token)=>{
           return req.token !== token.token   

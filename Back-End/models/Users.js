@@ -100,7 +100,7 @@ userSchema.pre('save', async function (next) {
 })
 
 //add a virtual relation between event and user 
-userSchema.virtual('event',{
+userSchema.virtual('createdEvents',{
     ref: 'Event',
     localField:'_id',
     foreignField: 'owner',
