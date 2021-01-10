@@ -16,8 +16,11 @@ class UpdateEvent extends React.Component{
       postcode: 0,
       description: '',
       hour:'',
-      date : 'moment().format("DD-MM-YYYY hh:mm:ss")'
+      date : '',
+      image :'',
+      _id :''
     }
+    this.formData = new FormData();
   }
 
   componentDidMount() {
@@ -35,12 +38,15 @@ class UpdateEvent extends React.Component{
     .then((response) => response.json())
     .then((result) => {
       this.setState({name : result.response.name})
+      this.setState({title : result.response.name})
       this.setState({place : result.response.place})
       this.setState({city : result.response.city})
       this.setState({postcode : result.response.postcode})
       this.setState({description : result.response.description})
       this.setState({date : result.response.date})
       this.setState({hour : result.response.hour})
+      this.setState({image : result.response.image})
+      this.setState({eventId :result.response._id})
     })
  }
 
@@ -48,15 +54,23 @@ class UpdateEvent extends React.Component{
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  myChangeHandlerFile = (e) => {
+    this.formData.append('image',e.target.files[0])
+  }
+
   mySubmitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    this.formData.append('name',this.state.name);
+    this.formData.append('place',this.state.place);
+    this.formData.append('city',this.state.city);
+    this.formData.append('postcode',this.state.postcode);
+    this.formData.append('description',this.state.description);
+    this.formData.append('date',this.state.date);
+    this.formData.append('hour',this.state.hour);
+    this.formData.append('eventId',this.state.eventId);
     fetch('http://localhost:3001/api/event/updateEvent', {
       method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
+      body: this.formData
     })
     .then((response) => response.json())
     .then((result) => {
@@ -67,8 +81,8 @@ class UpdateEvent extends React.Component{
  render() {
   return (
     <div>
-      <h1> Modification de l'événement {this.state.name} </h1>
-      <form onSubmit={this.mySubmitHandler}>
+      <h1> Modification de l'événement {this.state.title} </h1>
+      <form onSubmit={this.mySubmitHandler} encType="multipart/form-data">
         <div className="form-group">
           <label htmlFor="name">Nom</label>
           <input className="form-control" type="text" id="name" name="name" value={this.state.name} onChange={this.myChangeHandler} required/>
@@ -105,7 +119,16 @@ class UpdateEvent extends React.Component{
           </div>
         </div>
 
-  
+        <div className="row">
+          <div className="col-md-6 mb-2">
+            <img className="imgEvent" src={process.env.PUBLIC_URL + '/images/' + this.state.image} />
+          </div>
+          <div className="col-md-6 mb-2">
+            <label htmlFor="image"> Image </label>
+            <input type="file" id="image" name="image" className="form-control" onChange={this.myChangeHandlerFile} accept="image/x-png,image/gif,image/jpeg"/>
+          </div>
+        </div>  
+        
         <input type="submit" value="Envoyer" />
     </form>
   </div>
