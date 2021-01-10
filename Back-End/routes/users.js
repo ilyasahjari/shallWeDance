@@ -39,7 +39,7 @@ router.get('/allUsers',async (req,res)=>{
 
 
 //show by id
-router.get('/users/:id', auth, async(req,res)=>{
+router.get('/:id', auth, async(req,res)=>{
     const _id = req.params.id;
     try{
         const user = await User.findById(_id);
@@ -53,7 +53,7 @@ router.get('/users/:id', auth, async(req,res)=>{
 
 
 //update user
-router.patch('/user/me', auth, async(req, res)=>{
+router.patch('/update/me', auth, async(req, res)=>{
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'password','email', 'password','bornDate','gendre','bio','country','image']
 
@@ -74,7 +74,7 @@ router.patch('/user/me', auth, async(req, res)=>{
 
 
 //delete user
-router.delete('/user/me', auth ,async(req,res)=>{
+router.delete('/delete/me', auth ,async(req,res)=>{
     try{
         await req.user.remove();
         res.status(200).send(user)
@@ -110,7 +110,7 @@ router.post('/logout', auth, async(req,res)=>{
 
 
 //disconnect all users
-router.post('/user/logoutall',auth, async(req, res)=>{
+router.post('/logoutall',auth, async(req, res)=>{
     try{
         req.user.tokens = []
         await req.user.save();

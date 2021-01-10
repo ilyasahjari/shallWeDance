@@ -20,7 +20,7 @@ class AllEvents extends React.Component{
         })
         .then((response) => response.json())
         .then((result) => {
-            this.setState({allEvents : result.response})
+            this.setState({allEvents : result})
         })
     }
 

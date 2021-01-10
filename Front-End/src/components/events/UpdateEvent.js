@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react';
 import moment from "moment";
 import DatePicker from 'react-datepicker'
@@ -25,7 +23,7 @@ class UpdateEvent extends React.Component{
     this.setState({eventId : eventId})
     let json = {"eventId" : eventId};
     json = JSON.stringify(json);
-    fetch('http://localhost:3001/api/event/oneEvent', {
+    fetch(`http://localhost:3001/api/event/update/${eventId}`, {
       method: "POST",
       headers: {
         'Content-type': 'application/json',

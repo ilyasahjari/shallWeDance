@@ -1,12 +1,13 @@
-import './App.css';
-import AppRouter from "./components/router/AppRouter"
+import React from 'react';
+
 
 function App() {
   return (
     <div className="App">
-      <AppRouter />
+      <p> Bienvenue </p>
     </div>
   );
 }
+
 
 export default App;
