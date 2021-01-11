@@ -18,11 +18,11 @@ const Login = (props) => {
         setPassword(password);
     };
 
-    const handleLogin = (e) =>{
+    const handleLogin = async(e) =>{
         e.preventDefault();
         setLoading(true);
         try{
-            login(email,password)
+            await login(email,password)
             setLoading(false);
             props.history.push('/');
             window.location.reload();

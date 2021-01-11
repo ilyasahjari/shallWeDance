@@ -1,10 +1,12 @@
 import React from 'react';
 import {logout} from './services/auth.service'
 
-function App(props) {
-  const handleLogout =async()=>{
+const Accueil=(props)=> {
+  
+  const handleLogout = async(e)=>{
+    e.preventDefault();
     try{
-      logout()
+       logout()
       props.history.push('/login');
       window.location.reload();
     }catch(e){
@@ -21,4 +23,4 @@ function App(props) {
 }
 
 
-export default App;
+export default Accueil;

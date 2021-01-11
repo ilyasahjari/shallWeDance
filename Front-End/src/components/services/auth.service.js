@@ -24,18 +24,15 @@ export const login = (email, password) => {
         });
 };
 
-export const logout = async () => {
-    try {
-        await axios.post(API_URL + "logout", { header: authHeader() })
+export const logout = () => {
+
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-    } catch (e) {
-        console.log(e)
-    }
+
 };
 
 
 
 export const getCurrentUser = () => {
-    return  JSON.parse(localStorage.getItem("user"))
+    return JSON.parse(localStorage.getItem("user"))
 };
