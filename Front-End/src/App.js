@@ -1,10 +1,11 @@
 import './App.css';
-import AppRouter from "./components/router/AppRouter"
+import { AppMain } from './components/AppMain';
+import AppRouter from './components/router/AppRouter'
 
 function App() {
   return (
     <div className="App">
-      <AppRouter />
+      <AppRouter/>
     </div>
   );
 }

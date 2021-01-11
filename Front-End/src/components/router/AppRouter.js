@@ -4,17 +4,20 @@ import Accueil from '../Accueil'
 import UpdateEvent from '../events/UpdateEvent'
 import AllEvents from '../events/AllEvents'
 import MessgeError from '../MessageError'
+import Login from '../users/Login'
+import PrivateRoute from './PrivateRoute'
 
 const AppRouter = () => {
     return (
         <div className="App">
             <Router>
                 <Switch>
-                    <Route path="/" exact component={Accueil} />
-                    <Route path="/allEvents" component={AllEvents} />
-                    <Route path="/addEvent" component={AddEvent} />
-                    <Route path="/updateEvent/:eventId" component={UpdateEvent} />
-                    <Route component={MessgeError} />
+                    <Route path="/login" component={Login}/>
+                    <PrivateRoute path="/" exact component={Accueil} />
+                    <PrivateRoute path="/allEvents" component={AllEvents} />
+                    <PrivateRoute path="/addEvent" component={AddEvent} />
+                    <PrivateRoute path="/updateEvent/:eventId" component={UpdateEvent} />
+                    <PrivateRoute component={MessgeError} />
                 </Switch>
             </Router>
         </div>

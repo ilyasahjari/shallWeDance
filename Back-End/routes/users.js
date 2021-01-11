@@ -5,7 +5,7 @@ const router = new express.Router()
 
 
 //add user with automatic connection by token
-router.post('/addUser', async(req,res)=>{
+router.post('/register', async(req,res)=>{
     const user= new User(req.body)
     try{
         await user.save()
@@ -23,7 +23,7 @@ router.post('/addUser', async(req,res)=>{
 })
 
 //show my profile 
-router.get('/user/me', auth, async(req, res)=>{
+router.get('/me', auth, async(req, res)=>{
     res.send( req.user );
 })
 
@@ -110,7 +110,7 @@ router.post('/logout', auth, async(req,res)=>{
 
 
 //disconnect all users
-router.post('/logoutall',auth, async(req, res)=>{
+router.post('/logoutAll',auth, async(req, res)=>{
     try{
         req.user.tokens = []
         await req.user.save();
