@@ -66,7 +66,9 @@ class UpdateEvent extends React.Component{
     this.formData.append('postcode',this.state.postcode);
     this.formData.append('description',this.state.description);
     this.formData.append('date',this.state.date);
-    this.formData.append('hour',this.state.hour);
+    if(this.state.hour) {
+      this.formData.append('hour',this.state.hour);
+    }
     this.formData.append('eventId',this.state.eventId);
     fetch('http://localhost:3001/api/event/updateEvent', {
       method: "POST",
@@ -74,7 +76,7 @@ class UpdateEvent extends React.Component{
     })
     .then((response) => response.json())
     .then((result) => {
-      console.log(result)
+      this.props.history.push('/seeEvent/' + this.state.eventId);
     })
   }
 

@@ -45,7 +45,7 @@ class AddEvent extends React.Component{
     })
     .then((response) => response.json())
     .then((result) => {
-      this.props.history.push('/updateEvent/' + result.event._id);
+      this.props.history.push('/seeEvent/' + result.event._id);
     })
   }
 

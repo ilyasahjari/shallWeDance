@@ -24,6 +24,10 @@ class AllEvents extends React.Component{
         })
     }
 
+    redirectToDetails(id) {
+        this.props.history.push('/seeEvent/' + id);
+    }
+
     render() {
         moment.locale('fr');
         return (
@@ -33,7 +37,7 @@ class AllEvents extends React.Component{
                  </div>
                  {this.state.allEvents.map(event => (
                      <div className="col-md-12 border border-dark mb-3">
-                        <h2 className="text-center">{event.name}</h2>
+                        <h2 className="text-center"><a class="redirect" href={'/seeEvent/' + event._id} >{event.name}</a></h2>
                         <div className="row">
                             <div className="col-md-4 mb-2">
                                 <img className="imgEvent" src={process.env.PUBLIC_URL + '/images/' + event.image} />
