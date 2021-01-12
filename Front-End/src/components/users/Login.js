@@ -25,7 +25,6 @@ const Login = (props) => {
             await login(email,password)
             setLoading(false);
             props.history.push('/');
-            window.location.reload();
         }catch(err){
             setErrorMessage(err);
             setLoading(false)

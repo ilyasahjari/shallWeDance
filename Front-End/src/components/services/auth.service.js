@@ -24,11 +24,14 @@ export const login = (email, password) => {
         });
 };
 
-export const logout = () => {
-
+export const logout = async() => {
+    try{
+        await axios.post(API_URL + "logoutAll", {} ,{ headers: authHeader() })
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-
+    }catch(e){
+        console.log(e)
+    }
 };
 
 
