@@ -4,6 +4,7 @@ const upload = require('../middleware/upload')
 const auth = require('../middleware/auth')
 const Event = require('../models/Events')
 const path = require('path')
+const { findOne } = require('../models/Events')
 
 
 
@@ -57,8 +58,17 @@ router.post("/addEvent", auth, upload.single('image'), async(req,res) => {
     }
 })
 
+router.get('/getEvent/:id', auth,async(req, res)=>{
+    const _id = req.params.id;
+    try{
+        const event = findOne({_id, owner: req.user._id})
+        res.status(200).send(event)
+    }catch(e){  
+        res.status(400).send(e)
+    }
+})
 
-router.patch("/update/:id", auth, async(req,res) => {
+router.post("/update/:id", async(req,res) => {
     const _id = req.params.id
     const eventUpdate = new Event(req.body)
     try{
