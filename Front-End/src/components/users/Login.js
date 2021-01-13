@@ -24,7 +24,7 @@ const Login = (props) => {
         try{
             await login(email,password)
             setLoading(false);
-            props.history.push('/');
+            props.history.push('/allEvents');
         }catch(err){
             setErrorMessage(err);
             setLoading(false)

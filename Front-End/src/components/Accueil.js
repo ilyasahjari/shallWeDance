@@ -6,7 +6,7 @@ const Accueil=(props)=> {
   const handleLogout = async(e)=>{
     e.preventDefault();
     try{
-       logout()
+      logout()
       props.history.push('/login');
     }catch(e){
       console.log(e);

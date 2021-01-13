@@ -6,6 +6,7 @@ import AllEvents from '../events/AllEvents'
 import MessgeError from '../MessageError'
 import Login from '../users/Login'
 import PrivateRoute from './PrivateRoute'
+import Register from '../users/Register'
 
 const AppRouter = () => {
     return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
             <Router>
                 <Switch>
                     <Route path="/login" component={Login}/>
+                    <Route path="/register" component={Register} />
                     <PrivateRoute path="/" exact component={Accueil} />
                     <PrivateRoute path="/allEvents" component={AllEvents} />
                     <PrivateRoute path="/addEvent" component={AddEvent} />
