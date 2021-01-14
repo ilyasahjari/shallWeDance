@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+
 import React from 'react';
 import moment from "moment";
+import authHeader from '../services/auth-header'
 
 
 
@@ -41,11 +41,12 @@ class AddEvent extends React.Component{
     this.formData.append('hour',this.state.hour)
     fetch('http://localhost:3001/api/event/addEvent', {
       method: "POST",
+      headers: authHeader(),
       body: this.formData
     })
     .then((response) => response.json())
     .then((result) => {
-      this.props.history.push('/updateEvent/' + result.event._id);
+      this.props.history.push('/allEvents');
     })
   }
 
