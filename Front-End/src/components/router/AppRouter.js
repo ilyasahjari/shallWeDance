@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AddEvent from '../events/AddEvent'
+import SeeEvent from '../events/SeeEvent'
 import Accueil from '../Accueil'
 import UpdateEvent from '../events/UpdateEvent'
 import AllEvents from '../events/AllEvents'
@@ -19,6 +20,7 @@ const AppRouter = () => {
                     <PrivateRoute path="/allEvents" component={AllEvents} />
                     <PrivateRoute path="/addEvent" component={AddEvent} />
                     <PrivateRoute path="/updateEvent/:eventId" component={UpdateEvent} />
+                    <PrivateRoute path="/seeEvent/:eventId" component={SeeEvent} />
                     <PrivateRoute component={MessgeError} />
                 </Switch>
             </Router>
