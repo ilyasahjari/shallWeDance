@@ -34,6 +34,23 @@
   object-fit: contain;
 }
 
+.topButton {
+  margin-block: 5%;
+}
+
+.contentEvent {
+  margin-top: 5%;
+}
+
+.pointer {
+  cursor: pointer
+}
+
+a.redirect, a.redirect:visited, a.redirect:hover, a.redirect:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
