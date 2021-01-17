@@ -62,14 +62,15 @@ router.post("/addEvent", auth, upload.single('image'), async(req,res) => {
 router.get('/getEvent/:id', auth,async(req, res)=>{
     const _id = req.params.id;
     try{
-        const event = findOne({_id, owner: req.user._id})
-        res.status(200).send(event)
+        const event = await Event.findOne({_id, owner: req.user._id})
+        console.log('back :' + event)
+        res.send(event)
     }catch(e){  
         res.status(400).send(e)
     }
 })
 
-router.post("/update/:id", async(req,res) => {
+router.post("/update/:id", auth,async(req,res) => {
     const _id = req.params.id
     const eventUpdate = new Event(req.body)
     try{
