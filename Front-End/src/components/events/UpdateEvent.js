@@ -41,7 +41,7 @@ const UpdateEvent = (props) => {
     e.preventDefault()
     try {
       const _id = props.match.params.eventId
-      const user = await axios.post(API_URL + 'update/' + _id, event, { headers: authHeader() })
+      await axios.post(API_URL + 'update/' + _id, event, { headers: authHeader() })
       props.history.push('/allEvents')
       window.location.reload()
     } catch (e) {
