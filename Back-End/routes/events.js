@@ -63,7 +63,6 @@ router.get('/getEvent/:id', auth,async(req, res)=>{
     const _id = req.params.id;
     try{
         const event = await Event.findOne({_id, owner: req.user._id})
-        console.log('back :' + event)
         res.send(event)
     }catch(e){  
         res.status(400).send(e)
