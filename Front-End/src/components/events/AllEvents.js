@@ -29,6 +29,9 @@ const AllEvents = () => {
             <div className="col-md-3 offset-md-9 mb-10">
                 <a className="btn btn-primary w-100 topButton" href={'/addEvent'} > Créer un événement </a>
             </div>
+            <div className="col-md-3 offset-md-9 mb-10">
+                <a className="btn btn-primary w-100 topButton" href={'/createdEvents'} > Vos événement créé  </a>
+            </div>
             { events.map((event) => {
                 return (
                     <div className="col-md-12 border border-dark mb-3" key={event._id}>

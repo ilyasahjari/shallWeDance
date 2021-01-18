@@ -26,8 +26,8 @@ class SeeEvent extends React.Component{
         this.setState({eventId : eventId})
         let json = {"eventId" : eventId};
         json = JSON.stringify(json);
-        fetch('http://localhost:3001/api/event/oneEvent', {
-            method: "POST",
+        fetch('http://localhost:3001/api/event/getEvent'+ eventId, {
+            method: "GET",
             headers: {
                 'Content-type': 'application/json',
             },
