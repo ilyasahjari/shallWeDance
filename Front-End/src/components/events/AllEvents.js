@@ -3,6 +3,7 @@ import moment from 'moment';
 import axios from 'axios';
 import 'moment/locale/fr';
 import authHeader from '../services/auth-header';
+import Accueil from '../Accueil';
 
 
 const AllEvents = () => {

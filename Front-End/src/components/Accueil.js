@@ -1,13 +1,16 @@
 import React from 'react';
 import {logout} from './services/auth.service'
+import {useHistory} from 'react-router-dom'
 
 const Accueil=(props)=> {
   
+  const history = useHistory();
+
   const handleLogout = async(e)=>{
     e.preventDefault();
     try{
       logout()
-      props.history.push('/login');
+      history.push('/login')
     }catch(e){
       console.log(e);
     }
