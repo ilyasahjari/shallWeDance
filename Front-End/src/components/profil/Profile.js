@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Header from './Header'
 import PostItem from "./Post.js"
 import axios from 'axios'
 import authHeader from '../services/auth-header';
 import { Link } from 'react-router-dom';
+import '../../css/profil.css'
+
+
 
 const Profile = () => {
 
@@ -11,15 +13,27 @@ const Profile = () => {
 
   const [user, setUser] = useState({
     name: '',
-    email:'',
+    email: '',
     bornDate: new Date(),
-    gendre:'F',
-    bio:'',
-    country:'',
-    image:''
+    gendre: 'F',
+    bio: '',
+    country: '',
+    style:'',
+    image: ''
   })
 
-  useEffect(async () => {
+  const getAge=(dateString)=> {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+  }
+    
+  const getUser = async () => {
     try {
       const user = await axios.get(API_URL + 'me', { headers: authHeader() })
       setUser(user.data);
@@ -27,11 +41,14 @@ const Profile = () => {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  useEffect(() => {
+    getUser();
   }, [])
 
   return (
     <div>
-      <Header />
       <div className="ProfilHeader">
 
         <div>
@@ -51,20 +68,18 @@ const Profile = () => {
           </div>
           <div className="ProfilAction">
             <h6>
-              <Link to="/createdEvents">
-                <button>My Events</button>
-              </Link>
+              <a className="btn btn-primary w-100 topButton" href={'/createdEvents'} > Mes événement créé </a>
             </h6>
-            <h6><button>My Groups</button></h6>
+            <h6><a className="btn btn-primary w-100 topButton"  > Mes groupes </a></h6>
           </div>
         </div>
 
       </div>
       <div className="ProfilContent">
         <div className="ProfilInfo">
-          <h6>Age : 23ans a calculer !</h6>
+          <h6>Age : {  getAge(user.bornDate) }</h6>
           <h6>Country : {user.country}</h6>
-          <h6>Style : HipHop</h6>
+          <h6>Style : {user.style}</h6>
         </div>
         <div className="ProfilPosts">
           <PostItem />

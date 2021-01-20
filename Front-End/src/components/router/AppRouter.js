@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute'
 import Register from '../users/Register'
 import CreatedEvents from '../events/CreatedEvents'
 import Profile from '../profil/Profile'
+import Header from '../Header'
 
 const AppRouter = () => {
     return (

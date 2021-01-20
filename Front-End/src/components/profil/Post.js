@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import '../../css/posts.css';
-
+import '../../css/posts.css'
 
 
 function PostHeader({ author, date }) {
