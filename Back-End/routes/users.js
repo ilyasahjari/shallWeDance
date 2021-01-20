@@ -2,11 +2,18 @@ const express = require('express')
 const User= require('../models/Users');
 const auth = require('../middleware/auth')
 const router = new express.Router()
+const upload = require('../middleware/upload')
+
 
 
 //add user with automatic connection by token
-router.post('/register', async(req,res)=>{
+router.post('/register', upload.single('image'),async(req,res)=>{
     const user= new User(req.body)
+    if (req.file) {
+        var name = req.file.path
+        var split = name.split(path.sep)
+        user.image = split[split.length - 1]
+    }
     try{
         await user.save()
         const token = await user.generateAuthToken()
@@ -14,12 +21,6 @@ router.post('/register', async(req,res)=>{
     }catch(e){
         res.status(400).send(e)
     }
-    //la meme chose que 
-    // user.save().then(()=>{
-    //     res.send(user)
-    // }).catch((error)=>{
-    //     res.status(400).send(error)
-    // })
 })
 
 //show my profile 
