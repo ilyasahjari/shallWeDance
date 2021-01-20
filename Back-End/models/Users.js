@@ -99,13 +99,20 @@ userSchema.pre('save', async function (next) {
     next();
 })
 
-//add a virtual relation between event and user 
+//add a virtual relation between event and creator 
 userSchema.virtual('createdEvents',{
     ref: 'Event',
     localField:'_id',
     foreignField: 'owner',
 })
 
+
+//add a virtual relation between event and participant
+userSchema.virtual('participateEvent',{
+    ref:'Event',
+    localField: '_id',
+    foreignField: 'participants'
+})
 
 const User = mongoose.model('User', userSchema)
 
