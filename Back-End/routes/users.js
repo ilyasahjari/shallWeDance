@@ -24,7 +24,7 @@ router.post('/register', async(req,res)=>{
 
 //show my profile 
 router.get('/me', auth, async(req, res)=>{
-    res.send( req.user );
+    res.status(200).send( req.user );
 })
 
 //show all users test

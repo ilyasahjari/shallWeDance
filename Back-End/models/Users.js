@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'empty'
     },
+    style: {
+        type : String,
+        default: 'HipHop'
+    },
     tokens: [{
         token: {
             type: String,
