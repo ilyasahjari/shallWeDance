@@ -12,7 +12,8 @@ const Profile = () => {
   const API_URL = "http://localhost:3001/api/user/";
 
   const [user, setUser] = useState({
-    name: '',
+    firstName: '',
+    lastName:'',
     email: '',
     bornDate: new Date(),
     gendre: 'F',
@@ -52,12 +53,13 @@ const Profile = () => {
       <div className="ProfilHeader">
 
         <div>
-          <img className="ProfilPicture"
-          />
+          <img className="ProfilPicture" src={process.env.PUBLIC_URL + '/images/' + user.image}/>
+          
         </div>
-
+        
         <div>
-          <h3> {user.name}</h3>
+        <br/>
+          <h3> {user.firstName.toUpperCase()}  {user.lastName.toUpperCase()}</h3>
         </div>
 
         <div>
@@ -73,11 +75,13 @@ const Profile = () => {
             <h6><a className="btn btn-primary w-100 topButton"  > Mes groupes </a></h6>
           </div>
         </div>
-
+        
       </div>
+
       <div className="ProfilContent">
+      <br/>
         <div className="ProfilInfo">
-          <h6>Age : {  getAge(user.bornDate) }</h6>
+          <h6>Age : {  getAge(user.bornDate)} ans</h6>
           <h6>Country : {user.country}</h6>
           <h6>Style : {user.style}</h6>
         </div>
