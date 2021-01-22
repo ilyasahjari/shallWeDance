@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Redirect, Route} from 'react-router-dom'
+import Accueil from '../Accueil'
+import Header from '../Header'
 import { getCurrentUser } from '../services/auth.service'
 
 
@@ -10,7 +12,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             {...rest}
             render={props =>
                 getCurrentUser() ? (
-                    <Component {...props} />
+                    <div>
+                        <Header/>
+                        <Component {...props} />
+                    </div>
                 ) : (
                         <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
                     )

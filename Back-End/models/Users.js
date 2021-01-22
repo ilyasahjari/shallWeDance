@@ -4,9 +4,13 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
         required: true
+    },
+    lastName:{
+        type: String,
+        require:true
     },
     email: {
         type: String,
@@ -40,7 +44,11 @@ const userSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: 'empty'
+        default: ''
+    },
+    style: {
+        type : String,
+        default: 'HipHop'
     },
     tokens: [{
         token: {
@@ -99,13 +107,20 @@ userSchema.pre('save', async function (next) {
     next();
 })
 
-//add a virtual relation between event and user 
+//add a virtual relation between event and creator 
 userSchema.virtual('createdEvents',{
     ref: 'Event',
     localField:'_id',
     foreignField: 'owner',
 })
 
+
+//add a virtual relation between event and participant
+userSchema.virtual('participateEvent',{
+    ref:'Event',
+    localField: '_id',
+    foreignField: 'participants'
+})
 
 const User = mongoose.model('User', userSchema)
 

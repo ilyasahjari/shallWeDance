@@ -3,17 +3,16 @@ import moment from 'moment';
 import axios from 'axios';
 import 'moment/locale/fr';
 import authHeader from '../services/auth-header';
-import Accueil from '../Accueil';
 
 
-const AllEvents = () => {
+const CreatedEvents = () => {
 
     const [events, setEvents] = useState([]);
     const API_URL = "http://localhost:3001/api/event/";
 
     const getEvents = async () => {
         try {
-            const events = await axios.get(API_URL + 'allEvents');
+            const events = await axios.get(API_URL + 'allCreatedEvents', { headers : authHeader() });
             setEvents(events.data)
         } catch (e) {
             console.log(e)
@@ -29,9 +28,6 @@ const AllEvents = () => {
         <div className="row">
             <div className="col-md-3 offset-md-9 mb-10">
                 <a className="btn btn-primary w-100 topButton" href={'/addEvent'} > Créer un événement </a>
-            </div>
-            <div className="col-md-3 offset-md-9 mb-10">
-                <a className="btn btn-primary w-100 topButton" href={'/createdEvents'} > Vos événement créé  </a>
             </div>
             { events.map((event) => {
                 return (
@@ -67,4 +63,12 @@ const AllEvents = () => {
 
 }
 
-export default AllEvents;
+export default CreatedEvents;
+
+
+
+
+
+
+
+

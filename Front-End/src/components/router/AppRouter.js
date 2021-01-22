@@ -8,6 +8,9 @@ import MessgeError from '../MessageError'
 import Login from '../users/Login'
 import PrivateRoute from './PrivateRoute'
 import Register from '../users/Register'
+import CreatedEvents from '../events/CreatedEvents'
+import Profile from '../profil/Profile'
+import Header from '../Header'
 
 const AppRouter = () => {
     return (
@@ -18,9 +21,11 @@ const AppRouter = () => {
                     <Route path="/register" component={Register} />
                     <PrivateRoute path="/" exact component={Accueil} />
                     <PrivateRoute path="/allEvents" component={AllEvents} />
+                    <PrivateRoute path="/createdEvents" component={CreatedEvents} />
                     <PrivateRoute path="/addEvent" component={AddEvent} />
                     <PrivateRoute path="/updateEvent/:eventId" component={UpdateEvent} />
                     <PrivateRoute path="/seeEvent/:eventId" component={SeeEvent} />
+                    <PrivateRoute path="/profile" component={Profile}/>
                     <PrivateRoute component={MessgeError} />
                 </Switch>
             </Router>

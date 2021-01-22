@@ -34,6 +34,13 @@
   object-fit: contain;
 }
 
+
+.imgLogo{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
 .topButton {
   margin-block: 5%;
 }
