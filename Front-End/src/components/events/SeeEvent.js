@@ -28,8 +28,8 @@ class SeeEvent extends React.Component{
         fetch('http://localhost:3001/api/event/getEvent/'+ eventId, {
             method: "GET",
             headers: {
-                'Content-type': 'application/json',
-                authHeaders()
+                'Content-type': 'application/json'
+                // authHeaders()
             }
         })
             .then((response) => response.json())
