@@ -122,6 +122,12 @@ userSchema.virtual('participateEvent',{
     foreignField: 'participants'
 })
 
+userSchema.virtual('publications',{
+    ref:'Publication',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
 const User = mongoose.model('User', userSchema)
 
 

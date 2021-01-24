@@ -49,5 +49,11 @@ const eventSchema = new Schema(
     }, {timestamps : true}
 )
 
+eventSchema.virtual('publicationsEvent',{
+    ref:'Publications',
+    localField: '_id',
+    foreignField: 'event'
+})
+
 const Event = mongoose.model('Event',eventSchema)
 module.exports= Event
