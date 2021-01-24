@@ -3,6 +3,8 @@ import PostItem from "./Post.js"
 import axios from 'axios'
 import moment from "moment";
 import authHeader from '../services/auth-header';
+import addImage from '../../images/addImage.png'
+import addVideo from '../../images/addVideo.png'
 import { Link } from 'react-router-dom';
 import '../../css/profil.css'
 
@@ -164,11 +166,9 @@ const Profile = (props) => {
         <div>
         <br/>
           <h3> {user.firstName.toUpperCase()}  {user.lastName.toUpperCase()}</h3>
-          <div className="ProfilInfo">
-            <h6>Age : {  getAge(user.bornDate)} ans</h6>
-            <h6>Country : {user.country}</h6>
-            <h6>Style : {user.style}</h6>
-          </div>
+          <h6>Age : {  getAge(user.bornDate)} ans</h6>
+          <h6>Country : {user.country}</h6>
+          <h6>Style : {user.style}</h6>
         </div>
 
         <div>
@@ -192,13 +192,29 @@ const Profile = (props) => {
           <button className="btn btn-success" onClick={toggle}> Écrire une publication </button>
       </div>
       {isOpened && (
-      <div className="col-md-6 offset-md-4">
+      <div className="col-md-8 offset-md-2">
         <form onSubmit={addPublication}>
           <div className="form-group">
-            <label htmlFor="content">Votre publication</label>
-            <input className="form-control" type="text" id="content" name="content"  onChange={onChangeEvent} required />
+            <label htmlFor="content"> Que souhaitez-vous dire à vos amis ?</label>
+            <textarea className="form-control" type="text" id="content" name="content"  onChange={onChangeEvent} required />
           </div>
-          <input type="submit" value="Envoyer" />
+          <div className="form-row mt-2 image-upload">
+              <div className="col image-upload">
+                <label for="imageFile">
+                <img src={addImage} className="iconimage"/>
+                </label>
+                <input id="imageFile" type="file" />
+              </div>
+
+              <div className="col image-upload">
+                <label for="videoFile">
+                <img src={addVideo} className="iconimage"/>
+                </label>
+                <input id="videoFileFile" type="file" />
+              </div>
+
+          </div>
+          <input type="submit" value="Ajouter ma publication" className="btn btn-primary" />
         </form>
       </div>
       )}

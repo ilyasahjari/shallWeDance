@@ -29,7 +29,7 @@ class SeeEvent extends React.Component{
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
-                authHeaders()
+                //authHeaders()
             }
         })
             .then((response) => response.json())

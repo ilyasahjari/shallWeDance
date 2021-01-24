@@ -16,7 +16,6 @@ router.post("/addPublication", auth, upload.single('image'), async (req, res) =>
         var split = name.split(path.sep)
         publication.image = split[split.length - 1]
     }
-    console.log(publication)
     try {
         await publication.save()
         console.log(publication)

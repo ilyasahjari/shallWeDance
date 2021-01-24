@@ -60,3 +60,12 @@ a {
     margin-right: 2%;
     flex-grow: 10;
 }
+
+.image-upload>input {
+    display: none;
+  }
+  
+.iconimage{
+    height: 40px;
+    width: 40px;
+}
