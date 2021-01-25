@@ -8,6 +8,7 @@ const app = express()
 
 const UserRoute = require('./routes/users')
 const EventRoute = require('./routes/events')
+const PublicationRoute = require('./routes/publications')
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/shallWeDance', { useNewUrlParser : true, useUnifiedTopology: true,useFindAndModify: false})
@@ -47,4 +48,6 @@ app.listen(PORT, () => {
 
 app.use('/api/event', EventRoute)
 app.use('/api/user', UserRoute)
+app.use('/api/publication', PublicationRoute)
+
 

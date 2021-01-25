@@ -1,6 +1,7 @@
 import '../../App.css';
 import React from 'react';
 import moment from "moment";
+import authHeader from '../services/auth-header'
 
 class SeeEvent extends React.Component{
 
@@ -24,14 +25,12 @@ class SeeEvent extends React.Component{
     componentDidMount() {
         let eventId = this.props.match.params.eventId;
         this.setState({eventId : eventId})
-        let json = {"eventId" : eventId};
-        json = JSON.stringify(json);
-        fetch('http://localhost:3001/api/event/getEvent'+ eventId, {
+        fetch('http://localhost:3001/api/event/getEvent/'+ eventId, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
-            },
-            body: json
+                //authHeaders()
+            }
         })
             .then((response) => response.json())
             .then((result) => {
