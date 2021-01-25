@@ -34,32 +34,32 @@ const Login = (props) => {
 
 
     return (
-		<div class="login-content">
+		<div className="login-content">
             	
 			<form className="formLogin" onSubmit={handleLogin}>
-				<img src="img/avatar.svg"/>
-				<h2 class="title">Bienvenue à ShallWeDance</h2>
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
+				{/* <img src="img/avatar.svg"/> */}
+				<h2 className="title">Bienvenue à ShallWeDance</h2>
+           		<div className="input-div one">
+           		   <div className="i">
+           		   		<i className="fas fa-user"></i>
            		   </div>
-           		   <div class="div">
+           		   <div className="div">
            		   		<h5>Email</h5>
            		   		<input type="text" className="input" onChange={onChangeEmail}/>
            		   </div>
            		</div>
-           		<div class="input-div pass">
-           		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
+           		<div className="input-div pass">
+           		   <div className="i"> 
+           		    	<i className="fas fa-lock"></i>
            		   </div>
-           		   <div class="div">
+           		   <div className="div">
            		    	<h5>Mot de Passe</h5>
            		    	<input type="password" className="input" onChange={onChangePassword}/>
             	   </div>
             	</div>
-                <a href="">Créé nouveau compte</a>
+                <a href="/register">Créé nouveau compte</a>
             	<a href="">Mot de passe oublié ?</a>
-            	<input type="submit" class="loginButton" value="Login"/>
+            	<input type="submit" className="loginButton" value="Login"/>
             </form>
         </div>
 
