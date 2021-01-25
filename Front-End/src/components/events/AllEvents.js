@@ -11,6 +11,14 @@ const AllEvents = () => {
     const [events, setEvents] = useState([]);
     const API_URL = "http://localhost:3001/api/event/";
 
+    const paticipateToEvent = async (_id) => {
+        try {
+            await axios.post(API_URL + "participate/" + _id, { } , { headers: authHeader() })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const getEvents = async () => {
         try {
             const events = await axios.get(API_URL + 'allEvents');
@@ -21,8 +29,8 @@ const AllEvents = () => {
     }
 
     useEffect(() => {
-       getEvents(); 
-    },[])
+        getEvents();
+    }, [])
 
 
     return (
@@ -55,9 +63,12 @@ const AllEvents = () => {
                             </div>
                             <div className="col-md-2 mb-3">
                                 <a className="btn btn-primary w-100" href={'/updateEvent/' + event._id} > Modifier </a>
+                                <a className="btn btn-primary w-100" onClick={(e) => { paticipateToEvent(event._id) }}> Participer </a>
+
                             </div>
+
                         </div>
-                    </div> 
+                    </div>
 
                 )
             })}
