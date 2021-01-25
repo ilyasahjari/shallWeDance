@@ -108,6 +108,19 @@ router.post("/participate/:id", auth, async (req, res) => {
     }
 })
 
-
+router.get("/participate/:id", auth, async (req, res) => {
+    const _id = req.params.id
+    try{
+        const findEvent = await Event.findOne({ _id})
+        if(!findEvent)
+            res.status(400).send({
+                message : "no event"
+            })
+        const event = await findEvent.populate("participants").execPopulate()
+        res.status(200).send(event.participants);
+    }catch(e){
+        res.status(400).send(e)
+    }
+})
 
 module.exports = router
