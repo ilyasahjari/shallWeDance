@@ -14,6 +14,7 @@ const AllEvents = () => {
     const paticipateToEvent = async (_id) => {
         try {
             await axios.post(API_URL + "participate/" + _id, { } , { headers: authHeader() })
+            window.location.reload();
         } catch (e) {
             console.log(e);
         }
@@ -44,7 +45,9 @@ const AllEvents = () => {
             { events.map((event) => {
                 return (
                     <div className="col-md-12 border border-dark mb-3" key={event._id}>
-                        <h2 className="text-center"><a className="redirect" href={'/seeEvent/' + event._id} >{event.name}</a></h2>
+                        <h2 className="text-center"><a className="redirect" href={'/seeEvent/' + event._id} >{event.name} </a></h2>
+                        <h5 className="text-center"><a className="redirect" >{event.participants.length} participants</a></h5>
+
                         <div className="row">
                             <div className="col-md-4 mb-2">
                                 <img className="imgEvent" src={process.env.PUBLIC_URL + '/images/' + event.image} />
@@ -64,7 +67,6 @@ const AllEvents = () => {
                             <div className="col-md-2 mb-3">
                                 <a className="btn btn-primary w-100" href={'/updateEvent/' + event._id} > Modifier </a>
                                 <a className="btn btn-primary w-100" onClick={(e) => { paticipateToEvent(event._id) }}> Participer </a>
-
                             </div>
 
                         </div>
