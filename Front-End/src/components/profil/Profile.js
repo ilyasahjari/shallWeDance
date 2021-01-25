@@ -32,12 +32,12 @@ const Profile = (props) => {
 
   const [errorMessage, setErrorMessage] = useState('')
 
-
+  var now = moment(new Date());
   const [publication,setPublication] = useState ({
     content :'',
     image : '',
     video : '',
-    date: moment()
+    date: now
   })
 
   const [publications, setPublications] = useState([]);
@@ -92,8 +92,6 @@ const Profile = (props) => {
     e.preventDefault();
     try {
       formData.append('content',publication.content);
-      formData.append('image',publication.image);
-      formData.append('video',publication.video);
       formData.append('date',publication.date);
       await axios.post(API_URL_2 + 'addPublication', formData, { headers: authHeader() })
       props.history.push('/profile')
@@ -111,6 +109,25 @@ const Profile = (props) => {
       setIsCommentInput(!isCommentInput)
   }
 
+  const onChangeImage = (e) => {
+    formData.append('image',e.target.files[0])
+  }
+
+  const diffDate = (date) => {
+    const minutes = Math.round(moment.duration(now.diff(date)).asMinutes());
+    const hours = Math.round(moment.duration(now.diff(date)).asHours());
+    const days = Math.round(moment.duration(now.diff(date)).asDays());
+    if(minutes < 60 ){
+      return "Il y a " + minutes + " minutes";
+    }
+    else if (hours < 24){
+      return "Il y a "+ hours + " heures";
+    }
+    else{
+      return "Il y a "+ days + " jours";
+    }
+  }
+
   function AllMyPublication(){
     return (
       <div className="row">
@@ -120,15 +137,19 @@ const Profile = (props) => {
               <div className="col-md-12">
                 <div className="post">
                   <div className="post-header col-md-4">
-                    <img className="avatar"/>
+                    <img className="avatar" src={process.env.PUBLIC_URL + '/images/' + user.image}/>
                     <div className="details">
-                      <span className="mx-2"> Test </span>
-                      <span className="mx-2"> Il y a 5min </span> 
+                      <span className="mx-2"> {user.firstName} </span>
+                      <span className="mx-2"> { diffDate(publi.date) } </span> 
+                     
                     </div>
                   
                   </div>
 
-                  <p className="post-content">{ publi.content} </p>
+                  <h1 className="post-content">{ publi.content} </h1>
+                  {
+                        publi.image ?  <img src={process.env.PUBLIC_URL + '/images/' + publi.image} className="imgPost mt-4"></img> : ""
+                  }
 
                 
                 </div>
@@ -203,7 +224,7 @@ const Profile = (props) => {
                 <label for="imageFile">
                 <img src={addImage} className="iconimage"/>
                 </label>
-                <input id="imageFile" type="file" />
+                <input id="imageFile" type="file" onChange={onChangeImage} />
               </div>
 
               <div className="col image-upload">

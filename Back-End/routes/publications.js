@@ -18,7 +18,6 @@ router.post("/addPublication", auth, upload.single('image'), async (req, res) =>
     }
     try {
         await publication.save()
-        console.log(publication)
         res.status(200).send(publication)
     } catch (e) {
         res.status(400).send(e)

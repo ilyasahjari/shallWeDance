@@ -69,3 +69,9 @@ a {
     height: 40px;
     width: 40px;
 }
+
+.imgPost{
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
