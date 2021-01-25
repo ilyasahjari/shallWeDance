@@ -22,7 +22,7 @@ const Header = () => {
             <nav>
                 <div className="nav-wrapper white">
                     <ul id="nav-mobile" className="left">
-                        <a href="#">
+                        <a href="/allEvents">
                             <img className='imgLogo'
                                 src={image} />
                         </a>

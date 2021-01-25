@@ -96,7 +96,7 @@ router.post("/participate/:id", auth, async (req, res) => {
     try {
         const findEvent = await Event.findOne({ _id, participants: req.user._id })
         if (!findEvent) {
-            const event = await Event.findOneAndUpdate({ _id, owner: req.user._id }, { "$push": { "participants": req.user._id } })
+            const event = await Event.findOneAndUpdate({ _id }, { "$push": { "participants": req.user._id } })
             res.status(200).send(event)
         }else
         res.status(400).send({

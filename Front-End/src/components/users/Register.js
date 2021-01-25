@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { register } from '../services/auth.service'
 import axios from "axios"
+import moment from "moment"
 
 const Register = (props) => {
 
@@ -12,6 +13,7 @@ const Register = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [image, setImage] = useState("");
+    const [date, setDate]= useState(moment().format("DD-MM-YYYY hh:mm:ss"))
 
     const formData = new FormData()
 
@@ -35,19 +37,26 @@ const Register = (props) => {
         setPassword(password);
     }
 
+    const onDateChange =(e)=>{
+        const date = e.target.value;
+        setDate(date)
+    }
+
     const onChangeImage = (e) => {
         const image = e.target.files[0];
-        formData.append('image',image)
+        formData.append('image', image)
     }
+
+    
 
     const handleAdd = async (e) => {
         e.preventDefault();
         try {
-            formData.append('firstName',firstName)
-            formData.append('lastName',lastName)
-            formData.append('email',email)
-            formData.append('password',password)
-
+            formData.append('firstName', firstName)
+            formData.append('lastName', lastName)
+            formData.append('email', email)
+            formData.append('password', password)
+            formData.append('bornDate',date)
             await axios.post(API_URL + 'register', formData);
 
             props.history.push('/login')
@@ -81,10 +90,17 @@ const Register = (props) => {
                     <input type="password" id="city" name="city" className="form-control" onChange={onPasswordChange} required />
                 </div>
 
+                <div className="col">
+                    <label htmlFor="date"> Date </label>
+                    <input type="date" id="date" name="date" className="form-control" onChange={onDateChange} value={moment(date).format("YYYY-MM-DD")} required />
+                </div>
+
                 <div className="form-group">
                     <label htmlFor="image"> Image </label>
                     <input type="file" id="image" name="image" className="form-control" onChange={onChangeImage} />
                 </div>
+
+                
 
                 <input type="submit" value="Envoyer" />
             </form>
