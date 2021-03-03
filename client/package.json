@@ -2,7 +2,6 @@
   "name": "shallwedance",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
@@ -15,6 +14,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
     "form-data": "^3.0.0",
+    "http-proxy-middleware": "^1.0.6",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
