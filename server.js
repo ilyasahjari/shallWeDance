@@ -15,7 +15,7 @@ const TypeRoute = require('./routes/dansetype')
 const NotificationRoute = require('./routes/notification')
 const RateRoute = require('./routes/rates')
 
-mongoose.connect('mongodb+srv://shallwedance:Shallwedance1?@cluster0.kwpgx.mongodb.net/shallWeDance?retryWrites=true&w=majority', { useNewUrlParser : true, useUnifiedTopology: true,useFindAndModify: false})
+mongoose.connect('mongodb+srv://shallwedance:shallwedance@cluster0.kwpgx.mongodb.net/shallWeDance?retryWrites=true&w=majority', { useNewUrlParser : true, useUnifiedTopology: true,useFindAndModify: false})
 const db = mongoose.connection
 
 
