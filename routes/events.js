@@ -190,7 +190,7 @@ router.post("/update", auth, upload.single('image'), async (req, res) => {
         var split = name.split(path.sep)
         eventUpdate.image = split[split.length - 1]
         if(oldEvent.image) {
-            fs.unlinkSync(process.cwd()+"/../Front-End/public/images/"+oldEvent.image)
+            fs.unlinkSync(process.cwd()+"/client/public/images/"+oldEvent.image)
         }
     }
     try {

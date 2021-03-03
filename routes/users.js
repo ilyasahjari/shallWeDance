@@ -68,7 +68,7 @@ router.post('/update/me', auth, upload.single('image'), async (req, res) => {
         var split = name.split(path.sep)
         updateData.image = split[split.length - 1]
         if (oldUser.image) {
-            fs.unlinkSync(process.cwd() + "/../Front-End/public/images/" + oldUser.image)
+            fs.unlinkSync(process.cwd() + "/client/public/images/" + oldUser.image)
         }
     }
     const updates = Object.keys(req.body)

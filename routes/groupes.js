@@ -75,7 +75,7 @@ router.post("/update", auth, upload.single('image'), async (req, res) => {
         var split = name.split(path.sep)
         groupeUpdate.image = split[split.length - 1]
         if(oldGroupe.image) {
-            fs.unlinkSync(process.cwd()+"/../Front-End/public/images/"+oldGroupe.image)
+            fs.unlinkSync(process.cwd()+"/client/public/images/"+oldGroupe.image)
         }
     }
     try {
