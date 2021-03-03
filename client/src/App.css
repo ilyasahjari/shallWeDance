@@ -1,0 +1,345 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.imgEvent{
+  height: 100%;
+  width: 100%;
+  max-width: 300px;
+  object-fit: contain;
+}
+
+body {
+  zoom: 120%
+}
+
+
+.imgLogo{
+  height: 40px;
+  width: 180px;
+}
+
+.background-dark {
+  background-color: #5B5D61;
+  color: white !important;
+}
+
+.bg-light-grey {
+  background-color: #bbc0c9;
+  color: #000000 !important;
+  border-radius: 15px 50px;
+  border-color: #bbc0c9 !important;
+}
+
+.text-light {
+  color: white !important;
+}
+
+#collasible-nav-dropdown {
+  color: white !important;
+}
+
+.btn-primary, .btn-secondary {
+  background-color: #3B8CF7 !important;
+  border-color: #3B8CF7 !important;
+  color: white !important;
+}
+
+.btn-danger {
+  background-color: #F08532 !important;
+  border-color: #F08532 !important;
+}
+
+.bg-danger {
+  background-color: #F08532 !important;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-orange {
+  color: #F08532 !important;
+}
+
+.topButton {
+  margin-block: 5%;
+}
+
+.contentEvent {
+  margin-top: 8%;
+}
+
+.pointer {
+  cursor: pointer
+}
+
+a.redirect, a.redirect:visited, a.redirect:hover, a.redirect:active {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+p.date:before {
+  content: "";
+  display: block;
+  background: url("https://i.pinimg.com/564x/90/7b/93/907b93a8f31202b6d91b54efb4ec712b.jpg") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  background-color: aliceblue;
+  float: left;
+  margin-right: 10px;
+}
+p.place:before {
+  content: "";
+  display: block;
+  background: url("https://image.flaticon.com/icons/png/512/1412/1412067.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  background-color: aliceblue;
+  float: left;
+  margin-right: 10px;
+}
+p.city:before {
+  content: "";
+  display: block;
+  background: url("https://i.pinimg.com/originals/61/9d/13/619d13147cd5de7c813be306b9d87981.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  background-color: aliceblue;
+  float: left;
+  margin-right: 10px;
+}
+
+p.zipcode:before {
+  content: "";
+  display: block;
+  background: url("https://img.icons8.com/ios/452/zip-code.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  background-color: aliceblue;
+  float: left;
+  margin-right: 10px;
+}
+
+p.description:before {
+  content: "";
+  display: block;
+  background: url("https://image.flaticon.com/icons/png/512/32/32329.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  background-color: aliceblue;
+  float: left;
+  margin-right: 10px;
+}
+
+.organisateur{
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: 10px;
+}
+
+.searchbar{
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+  }
+
+  .search_input{
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color:transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+  }
+
+  .searchbar:hover > .search_input{
+  padding: 0 10px;
+  width: 450px;
+  caret-color:red;
+  transition: width 0.4s linear;
+  }
+
+  .searchbar:hover > .search_icon{
+  background: white;
+  color: #e74c3c;
+  }
+
+  .search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:white;
+  text-decoration:none;
+  }
+
+  select{
+    font-size: smaller !important;
+    height: 100% !important;
+  }
+
+  .searchBtn{
+    height: 100% !important;
+  }
+
+  .page{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .addbuttons{
+    margin-top: 10% !important;
+  }
+
+  .page-item.active .page-link {
+    margin-top: 50%;
+  }
+
+  .pagination li {
+    height: 0;
+  }
+
+  .page-item .page-link {
+    margin-top: 50%;
+  }
+
+  .page-link:active {
+    background-color: #3B8CF7 !important;
+    border-width: 1px !important;
+  }
+
+  .page-link {
+    border-width: 1px !important;
+  }
+
+  nav {
+    width: auto;
+    height: auto;
+  }
+
+  .fa-layers-counter{
+    font-size: 30px !important;
+    background-color: #F08532;
+  }
+
+  
+  .dropdown-menu{
+    top: 4em !important;
+    max-height : 25rem !important;
+    min-width: 30rem !important;
+    overflow-y: auto !important;
+    width: auto;
+    overflow-x: hidden;
+  }
+
+  .modal{
+    background-color: rgba(0,0,0,.0001) !important;
+  }
+
+  .notifications-body {
+    display: inline-block;
+  }
+
+  .dropdown-item {
+    padding : 0 0.25rem !important;
+  }
+  
+  .notification-texte {
+    text-align: left;
+    margin: -3% 0 -5% 0;
+  }
+  
+  .notification-read {
+    margin: 0;
+    height: 48px;
+    vertical-align: top;
+    line-height: 48px;
+    padding-left: 15px;
+    color: white;
+    float: right;
+  }
+  
+  .notification-date {
+    text-align: left;
+    color: #2980b9;
+    margin-top: -10%;
+  }
+  
+  .notification-solo {
+    margin-top: 1rem;
+  }
+  
+  .notification-unread {
+    text-decoration: none;
+    background-color: #f7f7f9;
+  }
+  
+  .nonlu{
+    background-color:#919191 ;
+    width: 100%;
+  }
+
+  .verticalAlign{
+    margin-top: 25%;
+    margin-bottom: auto;
+  }
+
+  .searchProfile{
+    width: 150px !important;
+    height: 7 !important;
+    color: #000000;
+  }
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
