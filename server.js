@@ -18,6 +18,7 @@ const RateRoute = require('./routes/rates')
 mongoose.connect('mongodb+srv://shallwedance:Shallwedance1?@cluster0.kwpgx.mongodb.net/shallWeDance?retryWrites=true&w=majority', { useNewUrlParser : true, useUnifiedTopology: true,useFindAndModify: false})
 const db = mongoose.connection
 
+
 db.on('error', (err)=> {
     console.log(err)
 })

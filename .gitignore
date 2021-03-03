@@ -1,12 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-Front-End/node_modules
-Back-End/node_modules
-Back-End/package-lock.json
-Front-End/package-lock.json
-Front-End/.eslintcache
-Front-End/public/images/*
+client/node_modules
+/node_modules
+/package-lock.json
+client/package-lock.json
+client/.eslintcache
+client/public/images/*
 /.pnp
 .pnp.js
 
