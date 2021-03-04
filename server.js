@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended : true}))
 app.use(bodyParser.json())
 app.use(cors())
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 8000
 
 if(process.env.NODE_ENV === 'production'){
     //Set static folder
