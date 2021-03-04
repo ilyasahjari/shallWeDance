@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 const auth = require('../middleware/auth')
-const Rate = require('../models/rate')
+const Rate = require('../models/Rate')
 //const Event = require('../models/Event')
 
 
