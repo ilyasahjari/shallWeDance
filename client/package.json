@@ -1,7 +1,6 @@
 {
   "name": "shallwedance",
   "version": "0.1.0",
-  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -32,6 +31,7 @@
     "semantic-ui-react": "^2.0.3",
     "web-vitals": "^0.2.4"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
