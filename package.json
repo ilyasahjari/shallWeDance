@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "server": "nodemon server.js",
-    "dev": "nodemon server.js",
-    "client": "cd client && npm start",
-    "start": "concurrently \"npm run dev\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --prefix client && npm run build --prefix client"
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \" npm run client\" ",
   },
   "author": "",
   "license": "ISC",
