@@ -45,14 +45,6 @@ app.use(cors())
 
 const PORT = process.env.PORT || 8000
 
-if(process.env.NODE_ENV === 'production'){
-    //Set static folder
-    app.use(express.static('client/build'))
-
-    app.get('*', (req,res) => res.sendFile(__dirname,'client','build','index.html'))
-}
-
-
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
@@ -67,4 +59,11 @@ app.use('/api/comment', CommentRoute)
 app.use('/api/type', TypeRoute)
 app.use('/api/notification',NotificationRoute)
 app.use('/api/rate',RateRoute)
+
+if(process.env.NODE_ENV === 'production'){
+    //Set static folder
+    app.use(express.static('client/build'))
+
+    app.get('*', (req,res) => res.sendFile(__dirname,'client','build','index.html'))
+}
 
