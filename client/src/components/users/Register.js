@@ -6,7 +6,7 @@ import moment from "moment"
 const Register = (props) => {
 
 
-    const API_URL = "http://localhost:3001/api/user/";
+    const API_URL = process.env.REACT_APP_API_URL_USER
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
