@@ -30,17 +30,6 @@ export const logout = async() => {
         await axios.post(API_URL + "logout", {} ,{ headers: authHeader() })
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        localStorage.removeItem("setValue")
-        localStorage.removeItem("searchString")
-        localStorage.removeItem("type")
-        localStorage.removeItem("currentPage")
-        localStorage.removeItem("numberOfEvents")
-        localStorage.removeItem("searchStringCreate")
-        localStorage.removeItem("typeCreate")
-        localStorage.removeItem("currentPageCreate")
-        localStorage.removeItem("numberOfEventsCreate")
-        localStorage.removeItem("choiceCreate")
-        localStorage.removeItem("setValueCreate")
 
     }catch(e){
         console.log(e)
